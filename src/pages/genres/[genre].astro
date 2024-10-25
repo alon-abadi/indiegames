@@ -1,0 +1,12 @@
+---
+export async function getStaticPaths() {  
+    const genresList = (await Astro.glob('../../content/games/*.md')).reduce((arr, game) => [...arr,...game.frontmatter.genres], [])
+    return genresList.map((genre)=> ({params: {genre: genre}}))
+}
+const { genre } = Astro.params;
+const gamesInGenre = (await Astro.glob('../../content/games/*.md')).filter((game)=> game.frontmatter.genres.includes(genre))
+---
+
+<div>Good genre, {genre}!</div>
+<div>Games: {gamesInGenre.map((game)=>game.frontmatter.title)}</div>
+

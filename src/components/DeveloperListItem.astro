@@ -22,7 +22,7 @@ const developerGames = (await Astro.glob('../content/games/*.md')).filter((game)
 		</h2>
 		<p>
 			<a href={"https://"+ itchio +".itch.io/"}>Itch.io</a>
-			<a href={"https://x.com/" + twitter}>Twiter</a>
+			<a href={"https://x.com/" + twitter}>Twitter</a>
 			<a href={site}>Website </a>
 			{developerGames.map((game) => <div>{game.frontmatter.title}</div>)}
 		</p>

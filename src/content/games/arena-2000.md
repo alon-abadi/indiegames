@@ -1,6 +1,6 @@
 ---
 title: "Arena 2000"
-genres: ["rougelike", "shooter"]
+genres: ["roguelike", "shooter"]
 developers: ["alonabadi"]
 platforms: ["itch.io"]
 ---

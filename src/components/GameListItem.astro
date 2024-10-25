@@ -20,7 +20,7 @@ const { href, title, developers, body, genres } = Astro.props;
 		</h2>
 		<h3>Developers: {developers}</h3>
 		<p>
-			Genres: {genres.join(", ")}
+			Genres: {genres.map((genre)=><a href={"/genres/" + genre}>{genre}</a><br />)}
 			<div>{body}</div>
 			
 		</p>
