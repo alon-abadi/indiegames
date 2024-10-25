@@ -1,25 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import GameListItem from '../components/GameListItem.astro';
+const allGames = await Astro.glob('../content/games/*.md')
 ---
 
 <Layout title="משחקי אינדי ישראליים">
 	<main>
-		<h1>Welcome to <span class="text-gradient">indiegames.co.il</span></h1>
-		<p class="instructions">
-			This website focuses on  Israeli Indie Games!
-		</p>
+		<h1>Games</h1>
 		<ul role="list" class="link-card-grid">
-			<Card
-				href="developers"
-				title="Developers"
-				body="Developers"
-			/>
-			<Card
-				href="games"
-				title="Games"
-				body="Games."
-			/>
+            {allGames.map((game) => <GameListItem
+				href={game.url}
+				title={game.frontmatter.title}
+                developers = {game.frontmatter.developers}
+				body={game.rawContent()}
+                genres={game.frontmatter.genres}
+			/>)}
 		</ul>
 	</main>
 </Layout>
