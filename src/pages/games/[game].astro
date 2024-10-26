@@ -1,0 +1,31 @@
+---
+export async function getStaticPaths() {
+    const gamesList = await Astro.glob("../../content/games/*.md");
+    return gamesList.map((game) => ({
+        params: { game: game.frontmatter.title },
+        props: game,
+    }));
+}
+const { game } = Astro.params;
+const gameDetails = Astro.props;
+
+const developers = gameDetails.frontmatter.developers;
+const otherGamesByDeveloper = (await Astro.glob("../../content/games/*.md"))
+    .filter((game) =>
+        game.frontmatter.developers.some((dev) => developers.includes(dev)),
+    )
+    .filter((game) => game.frontmatter.title != gameDetails.frontmatter.title)
+    .map((game) => game.frontmatter.title);
+---
+
+<div>Good game, {game}!</div>
+<div>
+    Developers:
+    {developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}
+</div>
+
+{
+    otherGamesByDeveloper.length > 0 && (
+        <div>Games by the same developers: {otherGamesByDeveloper}</div>
+    )
+}

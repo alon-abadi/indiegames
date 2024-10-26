@@ -18,13 +18,14 @@ const { href, title, developers, body, genres } = Astro.props;
 			{title}
 			<span>&rarr;</span>
 		</h2>
+	</a>
 		<h3>Developers: {developers}</h3>
 		<p>
 			Genres: {genres.map((genre)=><a href={"/genres/" + genre}>{genre}</a><br />)}
 			<div>{body}</div>
 			
 		</p>
-	</a>
+	
 </li>
 <style>
 	.link-card {

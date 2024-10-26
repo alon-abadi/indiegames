@@ -15,18 +15,19 @@ const developerGames = (await Astro.glob('../content/games/*.md')).filter((game)
 ---
 
 <li class="link-card">
-	<a href={site}>
+	<a href={"/developers/" + name}>
 		<h2>
 			Name: {name}
 			<span>&rarr;</span>
 		</h2>
-		<p>
-			<a href={"https://"+ itchio +".itch.io/"}>Itch.io</a>
-			<a href={"https://x.com/" + twitter}>Twitter</a>
-			<a href={site}>Website </a>
-			{developerGames.map((game) => <div>{game.frontmatter.title}</div>)}
-		</p>
 	</a>
+	<p>
+		<a href={"https://"+ itchio +".itch.io/"}>Itch.io</a>
+		<a href={"https://x.com/" + twitter}>Twitter</a>
+		<a href={site}>Website </a>
+		{developerGames.map((game) => <div>{game.frontmatter.title}</div>)}
+	</p>
+
 	
 </li>
 <style>
