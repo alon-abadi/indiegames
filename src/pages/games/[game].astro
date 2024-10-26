@@ -1,4 +1,5 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
     const gamesList = await Astro.glob("../../content/games/*.md");
     return gamesList.map((game) => ({
@@ -18,14 +19,16 @@ const otherGamesByDeveloper = (await Astro.glob("../../content/games/*.md"))
     .map((game) => game.frontmatter.title);
 ---
 
-<div>Good game, {game}!</div>
-<div>
-    Developers:
-    {developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}
-</div>
+<Layout title="Games">
+    <div>Good game, {game}!</div>
+    <div>
+        Developers:
+        {developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}
+    </div>
 
-{
-    otherGamesByDeveloper.length > 0 && (
-        <div>Games by the same developers: {otherGamesByDeveloper}</div>
-    )
-}
+    {
+        otherGamesByDeveloper.length > 0 && (
+            <div>Games by the same developers: {otherGamesByDeveloper}</div>
+        )
+    }
+</Layout>
