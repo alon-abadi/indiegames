@@ -1,4 +1,5 @@
 ---
+import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
     const genresList = (await Astro.glob("../../content/games/*.md")).reduce(
         (arr, game) => [...arr, ...game.frontmatter.genres],
@@ -12,15 +13,16 @@ const gamesInGenre = (await Astro.glob("../../content/games/*.md")).filter(
 );
 ---
 
-<div>Good genre, {genre}!</div>
-<div>
-    Games:
-
-    {
-        gamesInGenre.map((game) => (
-            <a href={"/games/" + game.frontmatter.title}>
-                {game.frontmatter.title}
-            </a>
-        ))
-    }
-</div>
+<Layout title={genre}>
+    <div>Good genre, {genre}!</div>
+    <div>
+        Games:
+        {
+            gamesInGenre.map((game) => (
+                <a href={"/games/" + game.frontmatter.title}>
+                    {game.frontmatter.title},
+                </a>
+            ))
+        }
+    </div>
+</Layout>

@@ -1,0 +1,57 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<header>
+    <div id="logo">
+        <a href="/">
+            <span class="text-gradient">indiegames.co.il</span>
+        </a>
+    </div>
+    
+
+    <nav class="top-nav">
+        <ul>
+            <li>
+                <a href="/games">Games</a>
+            </li>
+            <li>
+                <a href="/developers">Developers</a>
+            </li>
+            <li>
+                <a href="/genres">Genres</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<style is:global>
+    * {
+        color: #f4fffd;
+    }
+    header {
+        display: flex;
+        flex-direction: row;
+        height: 4rem;
+        align-items: center;
+    }
+    header #logo{
+        flex-grow: 1;
+    }
+    header #logo a{ 
+        text-decoration: none
+    }
+    header li {
+        margin: 0 10px;
+        display: inline-block;
+    }
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+</style>

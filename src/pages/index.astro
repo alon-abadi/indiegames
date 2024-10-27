@@ -1,33 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 ---
 
-<Layout title="indiegames.co.il">
-	<main>
-		<h1>Welcome to <span class="text-gradient">indiegames.co.il</span></h1>
-		<p class="instructions">
-			This website focuses on  Israeli Indie Games!
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="developers"
-				title="Developers"
-				body="Developers list"
-			/>
-			<Card
-				href="games"
-				title="Games"
-				body="Games list"
-			/>
-			<Card
-				href="genres"
-				title="Genres"
-				body="Genres list"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Layout title="indiegames.co.il"></Layout>
 
 <style>
 	main {
@@ -49,7 +24,7 @@ import Card from '../components/Card.astro';
 		z-index: -1;
 	}
 	h1 {
-		font-size: 4rem;
+		font-size: 2rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
