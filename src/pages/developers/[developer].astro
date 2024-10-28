@@ -13,15 +13,19 @@ const gamesByDeveloper = (await Astro.glob("../../content/games/*.md")).filter(
 ---
 
 <Layout title="Developers">
-    <div>Good developer, {developer}!</div>
+    <h2>{developer}</h2>
     <div>
-        Games by developer:
-        {
-            gamesByDeveloper.map((game) => (
-                <a href={"/games/" + game.frontmatter.title}>
-                    {game.frontmatter.title}
-                </a>
-            ))
-        }
+        <p>Games by developer:</p>
+        <ul>
+            {
+                gamesByDeveloper.map((game) => (
+                    <li>
+                        <a href={"/games/" + game.frontmatter.title}>
+                            {game.frontmatter.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </div>
 </Layout>

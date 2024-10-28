@@ -1,8 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from "../components/Card.astro";
+const allGames = await Astro.glob("../content/games/*.md");
 ---
 
-<Layout title="indiegames.co.il"></Layout>
+<Layout title="indiegames.co.il">
+	<main>
+        <h1>Games</h1>
+        <ul role="list" class="link-card-grid">
+            {
+                allGames.map((game) => (
+                    <Card
+                        href={"/games/" + game.frontmatter.title}
+                        title={game.frontmatter.title}
+                        developers={game.frontmatter.developers}
+                        body={game.rawContent()}
+                        genres={game.frontmatter.genres}
+                    />
+                ))
+            }
+        </ul>
+    </main>
+</Layout>
 
 <style>
 	main {

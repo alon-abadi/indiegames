@@ -1,6 +1,4 @@
 ---
-import type { StringValidation } from 'astro:schema';
-
 interface Props {
 	name: string;
 	twitter: string;
@@ -17,14 +15,13 @@ const developerGames = (await Astro.glob('../content/games/*.md')).filter((game)
 <li class="link-card">
 	<a href={"/developers/" + name}>
 		<h2>
-			Name: {name}
-			<span>&rarr;</span>
+			{name}
 		</h2>
 	</a>
 	<p>
-		<a href={"https://"+ itchio +".itch.io/"}>Itch.io</a>
-		<a href={"https://x.com/" + twitter}>Twitter</a>
-		<a href={site}>Website </a>
+		{itchio != "" && <a href={"https://"+ itchio +".itch.io/"}>Itch.io</a>}
+		{twitter != "" && <a href={"https://x.com/" + twitter}>Twitter</a>}
+		{site != "" && <a href={site}>Website </a>}
 		{developerGames.map((game) => <div>{game.frontmatter.title}</div>)}
 	</p>
 
@@ -34,6 +31,7 @@ const developerGames = (await Astro.glob('../content/games/*.md')).filter((game)
 	.link-card {
 		list-style: none;
 		display: flex;
+		flex-direction: column;
 		padding: 1px;
 		background-color: #23262d;
 		background-image: none;
@@ -44,10 +42,10 @@ const developerGames = (await Astro.glob('../content/games/*.md')).filter((game)
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 	}
 	.link-card > a {
-		width: 100%;
+		width: calc(100%-0.5rem-1px);
 		text-decoration: none;
 		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
+		padding: calc(0.5rem - 1px);
 		border-radius: 8px;
 		color: white;
 		background-color: #23262d;
