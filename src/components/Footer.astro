@@ -12,3 +12,21 @@ const {} = Astro.props;
         </ul>
     </nav>
 </footer>
+<style is:global>
+    * {
+        color: #f4fffd;
+    }
+    footer {
+        display: flex;
+        flex-direction: row;
+        height: 4rem;
+        align-items: center;
+    }
+    footer nav{
+        flex-grow: 1;
+    }
+    footer li {
+        margin: 0 10px;
+        display: inline-block;
+    }
+</style>
