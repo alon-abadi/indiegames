@@ -16,11 +16,11 @@ const { href, title, body, developers, genres } = Astro.props;
 <div
 	class="image-background-container"
 	style={"background-image: url(" +
-		Arena2000Image.src +
+		DefaultImage.src +
 		"); height: " +
-		Arena2000Image.height +
+		DefaultImage.height +
 		"px; width: " +
-		Arena2000Image.width +
+		DefaultImage.width +
 		"px;"}
 >
 	<span class="spacer"></span>
@@ -39,6 +39,7 @@ const { href, title, body, developers, genres } = Astro.props;
 	.image-background-container {
 		display: flex;
 		flex-direction: column;
+		margin: 10px;
 	}
 
 	.image-background-container > * {
