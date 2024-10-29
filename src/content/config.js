@@ -9,6 +9,7 @@ const gamesCollection = defineCollection({
         developers: z.array(z.string()), 
         url: z.string().optional(),
         image: z.string().optional(),
+        youtubeVideo: z.string().optional(),
     }),
  });
 const developersCollection = defineCollection({
@@ -18,6 +19,7 @@ const developersCollection = defineCollection({
         twitter: z.string().optional(),
         itchio: z.string().optional(),
         site: z.string().optional(),
+        youtube: z.string().optional(),
     }),
 });
 

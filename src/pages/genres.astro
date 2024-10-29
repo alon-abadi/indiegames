@@ -1,7 +1,6 @@
 ---
+import TagsList from "../components/TagsList.astro";
 import Layout from "../layouts/Layout.astro";
-import GameListItem from "../components/GameListItem.astro";
-import { array } from "astro:schema";
 const allGames = await Astro.glob("../content/games/*.md");
 const allGenres = allGames
     .reduce((arr, game) => [...arr, ...game.frontmatter.genres], [])
@@ -11,28 +10,12 @@ const allGenres = allGames
 <Layout title="Genres">
     <main>
         <h1>Genres</h1>
-        <ul role="list" class="link-card-grid">
-            {
-                allGenres.map((genre) => (
-                    <li>
-                        <a href={"/genres/" + genre}>{genre}</a>
-                    </li>
-                ))
-            }
-        </ul>
+
+        <TagsList tags={allGenres} linkPrefix="/genres/"></TagsList>
     </main>
 </Layout>
 
 <style>
-    main {
-        margin: auto;
-        padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 2rem);
-        color: white;
-        font-size: 20px;
-        line-height: 1.6;
-    }
     .astro-a {
         position: absolute;
         top: -32px;

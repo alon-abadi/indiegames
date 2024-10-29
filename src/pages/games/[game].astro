@@ -1,4 +1,5 @@
 ---
+import TagsList from "../../components/TagsList.astro";
 import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
     const gamesList = await Astro.glob("../../content/games/*.md");
@@ -20,11 +21,15 @@ const otherGamesByDeveloper = (await Astro.glob("../../content/games/*.md"))
 ---
 
 <Layout title="Games">
-    <div>Good game, {game}!</div>
+    <h2>{game}</h2>
     <div>
-        Developers:
-        {developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}
+        <h3>Developers:</h3>
+        <p>{developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}</p>
     </div>
+    <div>
+        <TagsList tags={gameDetails.frontmatter.genres} linkPrefix="/genres/"></TagsList>
+    </div>
+    
 
     {
         otherGamesByDeveloper.length > 0 && (

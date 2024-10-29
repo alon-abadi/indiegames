@@ -1,5 +1,6 @@
 ---
 import DefaultImage from "../default.png"
+import Arena2000Image from "../content/games/arena-2000.png"
 
 interface Props {
 	title: string;
@@ -12,17 +13,37 @@ interface Props {
 const { href, title, body, developers, genres } = Astro.props;
 ---
 
-<li class="link-card">
-	<img src={DefaultImage.src}>
+
+<div class="image-background-container" style={"background-image: url("+Arena2000Image.src+"); height: "+ Arena2000Image.height+"px; width: "+Arena2000Image.width+"px;"}>
+	
+	<span class="spacer"></span>
 	<h2>
 		<a href={href}></a>{title}</a>
-		<span>&rarr;</span>
 	</h2>
 	<p>
 		{body}
 	</p>
-</li>
+</div>
+	
+
 <style>
+	.image-background-container{
+		display: flex; 
+		flex-direction: column;
+	}
+
+	.image-background-container > *{
+		background: #23262da8;
+	}
+
+	.image-background-container .spacer{
+		display: inline-block;
+		flex-grow: 2;
+		background: none;
+	}
+	.image-background-container > p{
+		
+	}
 	.link-card {
 		list-style: none;
 		display: flex;
@@ -55,12 +76,5 @@ const { href, title, body, developers, genres } = Astro.props;
 	p {
 		margin-top: 0.5rem;
 		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		/* color: rgb(var(--accent-light)); */
 	}
 </style>

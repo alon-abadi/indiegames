@@ -1,0 +1,49 @@
+---
+interface Props {
+    tags: string[];
+    linkPrefix: string
+}
+
+const { tags, linkPrefix } = Astro.props;
+---
+
+<div class="tags-container">
+    <ul class="tags-list">
+        {
+            tags.map((tag) => (
+                <li>
+                    <a href={linkPrefix + tag}>{tag}</a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+<style>
+    .tags-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 8pt;
+        gap: 0.5rem;
+    }
+    .tags-list li {
+        display: inline-block;
+        padding: 0.3rem 1rem;
+        border: 1px solid #465362;
+        border-width: 0;
+        border-radius: 16px;
+        background-color: #465362;
+        min-width: 2rem;
+        text-align: center;
+    }
+    .tags-list li:hover {
+        background-color: #5f7185;
+    }
+    .tags-list li a {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    .tags-list li a:hover {
+        text-decoration: underline;
+    }
+</style>

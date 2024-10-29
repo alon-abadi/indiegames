@@ -1,4 +1,6 @@
 ---
+import TagsList from './TagsList.astro';
+
 interface Props {
 	title: string;
 	developers: string[];
@@ -12,23 +14,25 @@ const { href, title, developers, body, genres } = Astro.props;
 
 <li class="link-card">
 	<a href={href}>
-		<h2>
 			{title}
-			<span>&rarr;</span>
-		</h2>
 	</a>
-		<h3>Developers: {developers}</h3>
-		<p>
-			Genres: {genres.map((genre)=><a href={"/genres/" + genre}>{genre}</a><br />)}
+	<TagsList tags={genres} linkPrefix="/genres/"></TagsList>
+		
+		
+			Developers: {developers}
+			<br />
+			
+			
 			<div>{body}</div>
 			
-		</p>
+		
 	
 </li>
 <style>
 	.link-card {
 		list-style: none;
 		display: flex;
+		flex-direction: column;
 		padding: 1px;
 		background-color: #23262d;
 		background-image: none;
@@ -42,7 +46,6 @@ const { href, title, developers, body, genres } = Astro.props;
 		width: 100%;
 		text-decoration: none;
 		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
 		border-radius: 8px;
 		color: white;
 		background-color: #23262d;
@@ -62,11 +65,12 @@ const { href, title, developers, body, genres } = Astro.props;
 		margin-top: 0.5rem;
 		margin-bottom: 0;
 	}
+	/* 
 	.link-card:is(:hover, :focus-within) {
 		background-position: 0;
 		background-image: var(--accent-gradient);
 	}
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
-	}
+	} */
 </style>
