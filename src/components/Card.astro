@@ -1,48 +1,57 @@
 ---
-import DefaultImage from "../default.png"
-import Arena2000Image from "../content/games/arena-2000.png"
+import DefaultImage from "../default.png";
+import Arena2000Image from "../content/games/arena-2000.png";
 
 interface Props {
 	title: string;
 	body: string;
 	href: string;
 	developers: string[];
-	genres: string[]
+	genres: string[];
 }
 
 const { href, title, body, developers, genres } = Astro.props;
 ---
 
-
-<div class="image-background-container" style={"background-image: url("+Arena2000Image.src+"); height: "+ Arena2000Image.height+"px; width: "+Arena2000Image.width+"px;"}>
-	
+<div
+	class="image-background-container"
+	style={"background-image: url(" +
+		Arena2000Image.src +
+		"); height: " +
+		Arena2000Image.height +
+		"px; width: " +
+		Arena2000Image.width +
+		"px;"}
+>
 	<span class="spacer"></span>
-	<h2>
-		<a href={href}></a>{title}</a>
-	</h2>
+	<a href={href}>
+		<h2>
+			{title}
+		</h2>
+	</a>
+
 	<p>
 		{body}
 	</p>
 </div>
-	
 
 <style>
-	.image-background-container{
-		display: flex; 
+	.image-background-container {
+		display: flex;
 		flex-direction: column;
 	}
 
-	.image-background-container > *{
+	.image-background-container > * {
 		background: #23262da8;
+		margin: 0px;
 	}
 
-	.image-background-container .spacer{
+	.image-background-container .spacer {
 		display: inline-block;
 		flex-grow: 2;
 		background: none;
 	}
-	.image-background-container > p{
-		
+	.image-background-container > p {
 	}
 	.link-card {
 		list-style: none;
@@ -65,7 +74,7 @@ const { href, title, body, developers, genres } = Astro.props;
 		background-color: #23262d;
 		opacity: 0.8;
 	}
-	.link-card > p { 
+	.link-card > p {
 		flex-grow: 1;
 	}
 	h2 {
