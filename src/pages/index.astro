@@ -12,7 +12,7 @@ const allGenres = allGames
 
 <Layout title="indiegames.co.il">
 	<main>
-		<h1>Games</h1>
+		<h1>Featured Games</h1>
 		<ul role="list" class="link-card-grid">
 			{
 				allGames.map((game) => (
@@ -26,6 +26,7 @@ const allGenres = allGames
 				))
 			}
 		</ul>
+		<br />
 		<h1>Genres</h1>
 		<TagsList tags={allGenres} linkPrefix="/genres/"></TagsList>
 	</main>
