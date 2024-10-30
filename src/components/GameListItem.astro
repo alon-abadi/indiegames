@@ -1,5 +1,5 @@
 ---
-import TagsList from './TagsList.astro';
+import TagsList from "./TagsList.astro";
 
 interface Props {
 	title: string;
@@ -14,19 +14,14 @@ const { href, title, developers, body, genres } = Astro.props;
 
 <li class="link-card">
 	<a href={href}>
-			{title}
+		{title}
 	</a>
-	<TagsList tags={genres} linkPrefix="/genres/"></TagsList>
-		
-		
-			Developers: {developers}
-			<br />
-			
-			
-			<div>{body}</div>
-			
-		
-	
+	<TagsList tags={genres} linkPrefix="/genres/" />
+
+	Developers: {developers}
+	<br />
+
+	<p>{body}</p>
 </li>
 <style>
 	.link-card {

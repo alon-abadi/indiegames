@@ -10,6 +10,7 @@ const gamesCollection = defineCollection({
         url: z.string().optional(),
         image: z.string().optional(),
         youtubeVideo: z.string().optional(),
+        platforms: z.map().optional(),
     }),
  });
 const developersCollection = defineCollection({

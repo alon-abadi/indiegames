@@ -18,22 +18,53 @@ const otherGamesByDeveloper = (await Astro.glob("../../content/games/*.md"))
     )
     .filter((game) => game.frontmatter.title != gameDetails.frontmatter.title)
     .map((game) => game.frontmatter.title);
+
 ---
 
 <Layout title="Games">
     <h2>{game}</h2>
     <div>
         <h3>Developers:</h3>
-        <p>{developers.map((dev) => <a href={"/developers/" + dev}> {dev} </a>)}</p>
+        <p>
+            {
+                developers.map((dev) => (
+                    <a href={"/developers/" + dev}> {dev} </a>
+                ))
+            }
+        </p>
     </div>
     <div>
-        <TagsList tags={gameDetails.frontmatter.genres} linkPrefix="/genres/"></TagsList>
+        Platforms: 
+        <ul>
+            {Object.entries(gameDetails.frontmatter.platforms).map(([platform, link])=>
+                <li><a href={String(link)}>{platform}</a></li>
+            )}
+        </ul>
+        
+        </div>
+    <div>
+        <div>
+            {
+                gameDetails.frontmatter.youtubeVideo && gameDetails.frontmatter.youtubeVideo != "" && (
+                    <p>Trailer:
+                <a href={"https://www.youtube.com/watch?v="+gameDetails.frontmatter.youtubeVideo}>Youtube</a>
+                <br /></p>
+                <iframe
+                    src={"https://www.youtube.com/embed/"+gameDetails.frontmatter.youtubeVideo}>
+                </iframe>
+                )
+            }
+        </div>
     </div>
-    
+    <div>
+        <TagsList tags={gameDetails.frontmatter.genres} linkPrefix="/genres/" />
+    </div>
 
     {
         otherGamesByDeveloper.length > 0 && (
-            <div>Games by the same developers: {otherGamesByDeveloper}</div>
+            <div>
+                Other Games by the developers: {otherGamesByDeveloper.join(",")}
+            </div>
         )
     }
 </Layout>

@@ -16,6 +16,7 @@ const allGames = await Astro.glob("../content/games/*.md");
                         developers={game.frontmatter.developers}
                         body={game.rawContent()}
                         genres={game.frontmatter.genres}
+                        youtubeVideo={game.frontmatter.youtubeVideo}
                     />
                 ))
             }
